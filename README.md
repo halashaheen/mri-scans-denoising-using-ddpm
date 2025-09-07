@@ -56,15 +56,18 @@ The evaluation metrics are presented in a summary table:
 +--------+----------+---------+
 | Method | SNR (dB) | SSIM    |
 +========+==========+=========+
-| DDPM   | 18.2519  | 0.8258  |
+| DDPM   | 25.47568 | 0.9432  |
 +--------+----------+---------+
-| NLM    | 14.8974  | 0.6931  |
+| NLM    | 21.6638  | 0.7897  |
 +--------+----------+---------+
 ```
 *(Note: Values are representative examples from a sample run and may vary.)*
 
 Visual comparisons further highlight the DDPM's effectiveness, showing cleaner reconstructions with fewer artifacts than those produced by NLM. 
 The notebook generates side-by-side comparisons of the original, noisy, DDPM-denoised, and NLM-denoised images, complete with per-image metric calculations.
+
+#### Denoising Results Sample for DDPM vs NLM (benchmark)
+![Denoising Results Sample](images/ddpm_vs_nlm_plus_plus.png)
 
 ## Getting Started
 
