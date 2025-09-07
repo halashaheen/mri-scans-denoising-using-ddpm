@@ -1,5 +1,4 @@
 # Denoising MRI Scans using Denoising Diffusion Probabilistic Models (DDPMs)
-[![Ask DeepWiki](https://devin.ai/assets/askdeepwiki.png)](https://deepwiki.com/hlla-shaheen/mri-scans-denoising-using-ddpm)
 
 This project explores the application of Denoising Diffusion Probabilistic Models (DDPMs) for denoising 2D medical MRI scans while preserving crucial diagnostic details. The implementation fine-tunes a pre-trained DDPM on the `IXI2D` dataset and provides a comprehensive evaluation by comparing its performance against the traditional Non-Local Means (NLM) algorithm using metrics like Signal-to-Noise Ratio (SNR) and Structural Similarity Index (SSIM).
 
@@ -22,8 +21,14 @@ The denoising process is structured into the following key stages:
     *   The dataset is split into training and testing sets, which are then saved to disk as PyTorch tensors for efficient loading.
 
 2.  **Forward Diffusion:**
+
     *   A linear beta schedule (`β_t`) is defined to control the variance of Gaussian noise added at each timestep `t`.
     *   The forward process gradually corrupts clean images `x_0` into noisy images `x_t` over `T` timesteps according to the closed-form formula: `x_t = sqrt(ᾱ_t) * x_0 + sqrt(1 - ᾱ_t) * ε`, where `ε` is Gaussian noise.
+
+
+      #### Forward Diffusion (Closed Form Equation)
+      ![Forward Diffusion Closed Form Equation](images/fwd_diffusion_closed_form.png)
+
 
 4.  **Model and Training:**
     *   A pre-trained UNet model (`benetraco/brain_ddpm_128`) is used as the noise predictor.
@@ -38,7 +43,8 @@ The denoising process is structured into the following key stages:
 
 ## Results
 
-The model is evaluated by adding noise to test images and then using both the fine-tuned DDPM and the NLM algorithm to denoise them. The results demonstrate the DDPM's superior ability to reconstruct the original image while preserving fine details compared to the NLM method.
+The model is evaluated by adding noise to test images and then using both the fine-tuned DDPM and the NLM algorithm to denoise them. 
+The results demonstrate the DDPM's superior ability to reconstruct the original image while preserving fine details compared to the NLM method.
 
 The evaluation metrics are presented in a summary table:
 
@@ -54,15 +60,17 @@ The evaluation metrics are presented in a summary table:
 ```
 *(Note: Values are representative examples from a sample run and may vary.)*
 
-Visual comparisons further highlight the DDPM's effectiveness, showing cleaner reconstructions with fewer artifacts than those produced by NLM. The notebook generates side-by-side comparisons of the original, noisy, DDPM-denoised, and NLM-denoised images, complete with per-image metric calculations.
+Visual comparisons further highlight the DDPM's effectiveness, showing cleaner reconstructions with fewer artifacts than those produced by NLM. 
+The notebook generates side-by-side comparisons of the original, noisy, DDPM-denoised, and NLM-denoised images, complete with per-image metric calculations.
 
 ## Getting Started
 
 ### Prerequisites
-Ensure you have a Python environment with the necessary packages installed. A CUDA-enabled GPU is highly recommended for reasonable training times.
+Ensure you have a Python environment with the necessary packages installed. 
+A CUDA-enabled GPU is highly recommended for reasonable training times.
 
 ```bash
-pip install torch torchvision torchaudio
+pip install torch torchvision 
 pip install diffusers transformers accelerate datasets scikit-learn scikit-image tabulate matplotlib pillow
 ```
 
@@ -71,7 +79,7 @@ The entire workflow is encapsulated in the `CSE681_DIP_Project.ipynb` Jupyter No
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/hlla-shaheen/mri-scans-denoising-using-ddpm.git
+    git clone https://github.com/halashaheen/mri-scans-denoising-using-ddpm.git
     cd mri-scans-denoising-using-ddpm
     ```
 
