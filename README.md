@@ -19,6 +19,9 @@ The denoising process is structured into the following key stages:
     *   The `iamkzntsv/IXI2D` dataset is loaded from the Hugging Face hub.
     *   Images are resized to 128x128, converted to grayscale, and normalized to a `[-1, 1]` range.
     *   The dataset is split into training and testing sets, which are then saved to disk as PyTorch tensors for efficient loading.
+      
+      #### Preprocessed Brain MRI Slice Sample with Descriptive Statistics
+      ![Preprocessed Sample](images/preprocessed_image_with_statistics.jpg)
 
 2.  **Forward Diffusion:**
 
